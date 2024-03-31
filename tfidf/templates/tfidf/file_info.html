@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information of file words!</title>
+</head>
+<body>
+    <table border="1" style="width:70%">
+        <thead>
+            <th style="width:30%">WORD</th>
+            <th style="width:30%">TF</th>
+            <th style="width:30%">IDF</th>
+        </thead>
+        <tbody>
+            {% for word, tf, idf in info %}
+            <tr>
+                <td>{{ word }}</td>
+                <td>{{ tf }}</td>
+                <td>{{ idf }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<div class="pagination">
+    <span class="step-links">
+        {% if info.has_previous %}
+            <a href="?page=1">
+                <button>&laquo; first</button>
+            </a>
+            <a href="?page={{ info.previous_page_number }}">
+                <button>previous</button>
+            </a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ info.number }} of {{ info.paginator.num_pages }}.
+        </span>
+
+        {% if info.has_next %}
+            <a href="?page={{ info.next_page_number }}">
+                <button>next</button>
+            </a>
+            <a href="?page={{ info.paginator.num_pages }}">
+                <button>last &raquo;</button>
+            </a>
+        {% endif %}
+    </span>
+</div>
+<form action="{% url 'upload' %}">
+    <button>TO UPLOAD</button>
+</form>
+</body>
+</html>

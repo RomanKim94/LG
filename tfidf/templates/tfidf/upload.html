@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+</head>
+<body>
+    <h1>Загрузите файл с расширением .txt</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.file }}<br>
+        <span>{{ error }}</span>
+        <button class="btn btn-success" type="submit"> Загрузить файл </button>
+    </form>
+
+</body>
+</html>
